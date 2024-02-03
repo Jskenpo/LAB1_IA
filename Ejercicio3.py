@@ -28,8 +28,8 @@ end_node = "Stretching"
 
 def bfs(start, end):
     visited = set()
-    queue = QueueFIFO()  # Utilizamos la cola FIFO en lugar de deque
-    queue.insert((start, []))  # Insertamos el elemento inicial
+    queue = QueueFIFO()  
+    queue.insert((start, []))  
     while not queue.empty():
         print("Cola actual:", queue.queue)
         print("Nodos visitados:", visited)
@@ -59,8 +59,8 @@ else:
     print("No hay camino de", start_node, "a", end_node)
 
 print("Tiempo de ejecución:", end_time - start_time, "segundos")
-    
 '''
+
 # A* algorithm
 
 def a_star(start, end):
@@ -84,6 +84,7 @@ def a_star(start, end):
     return None  # Devolver None si no se encuentra un camino
 
 
+
 '''
 start_time = time.time()
 path = a_star(start_node, end_node)
@@ -96,6 +97,7 @@ else:
     print("No hay camino de", start_node, "a", end_node)
 
 print("Tiempo de ejecución:", end_time - start_time, "segundos")
+
 '''
 
 
@@ -122,6 +124,7 @@ def dfs(start, end):
 
 
 
+
 '''
 start_time = time.time()
 path = dfs(start_node, end_node)
@@ -135,6 +138,7 @@ else:
 
 print("Tiempo de ejecución:", end_time - start_time, "segundos")
 '''
+
 
 
 # Uniform Cost Search algorithm, usando la cola de prioridad
@@ -161,6 +165,7 @@ def uniform_cost_search(start, end):
 
 
 
+
 '''
 start_time = time.time()
 path = uniform_cost_search(start_node, end_node)
@@ -176,11 +181,12 @@ else:
 print("Tiempo de ejecución:", end_time - start_time, "segundos")
 '''
 
-# Greedy Best First Search algorithm, usando la cola de prioridad
+
+# Greedy Best First Search algorithm
 
 def greedy_best_first(start, end):
     visited = set()
-    queue = PriorityQueue()  # Utilizamos la cola de prioridad en lugar de heapq
+    queue = PriorityQueue()  
     queue.insert((0, start, []))  # Insertamos el elemento inicial
     while not queue.empty():
         print("Cola actual:", queue.queue)
@@ -198,7 +204,7 @@ def greedy_best_first(start, end):
     return None  # Devolver None si no se encuentra un camino
 
 
-'''
+
 start_time = time.time()
 path = greedy_best_first(start_node, end_node)
 end_time = time.time()
@@ -211,4 +217,4 @@ else:
     print("No hay camino de", start_node, "a", end_node)
     
 print("Tiempo de ejecución:", end_time - start_time, "segundos")
-'''
+
