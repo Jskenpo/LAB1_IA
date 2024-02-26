@@ -1,6 +1,5 @@
 import pandas as pd
-import time
-from Ejercicio2 import QueueFIFO, QueueLIFO, PriorityQueue
+from Queue import QueueFIFO, QueueLIFO, PriorityQueue
 
 # Leer archivos de Excel
 costs_sheet = pd.read_excel("funcion_de_costo.xlsx") 
@@ -45,22 +44,6 @@ def bfs(start, end):
                 visited.add(neighbor)
     return None  # Devolver None si no se encuentra un camino
 
-
-'''
-
-start_time = time.time()
-path = bfs(start_node, end_node)
-end_time = time.time()
-print('------------BFS ALGORITHM------------')
-if path:
-    print("El camino de", start_node, "a", end_node, "es:", path)
-    print("Longitud del camino:", len(path) - 1)  # Restar 1 para obtener el número de aristas
-else:
-    print("No hay camino de", start_node, "a", end_node)
-
-print("Tiempo de ejecución:", end_time - start_time, "segundos")
-'''
-
 # A* algorithm
 
 def a_star(start, end):
@@ -83,24 +66,6 @@ def a_star(start, end):
                 visited.add(neighbor)
     return None  # Devolver None si no se encuentra un camino
 
-
-
-'''
-start_time = time.time()
-path = a_star(start_node, end_node)
-end_time = time.time()
-print('------------A* ALGORITHM------------')
-if path:
-    print("El camino de", start_node, "a", end_node, "es:", path)
-    print("Longitud del camino:", len(path) - 1)  # Restar 1 para obtener el número de aristas
-else:
-    print("No hay camino de", start_node, "a", end_node)
-
-print("Tiempo de ejecución:", end_time - start_time, "segundos")
-
-'''
-
-
 # DFS algorithm
 
 def dfs(start, end):
@@ -121,25 +86,6 @@ def dfs(start, end):
                 queue.insert((neighbor, path + [node]))  # Insertamos el vecino en la cola LIFO
                 visited.add(neighbor)
     return None  # Devolver None si no se encuentra un camino
-
-
-
-
-'''
-start_time = time.time()
-path = dfs(start_node, end_node)
-end_time = time.time()
-print('------------DFS ALGORITHM------------')
-if path:
-    print("El camino de", start_node, "a", end_node, "es:", path)
-    print("Longitud del camino:", len(path) - 1)  # Restar 1 para obtener el número de aristas
-else:
-    print("No hay camino de", start_node, "a", end_node)
-
-print("Tiempo de ejecución:", end_time - start_time, "segundos")
-'''
-
-
 
 # Uniform Cost Search algorithm, usando la cola de prioridad
 
@@ -163,25 +109,6 @@ def uniform_cost_search(start, end):
                 visited.add(neighbor)
     return None  # Devolver None si no se encuentra un camino
 
-
-
-
-'''
-start_time = time.time()
-path = uniform_cost_search(start_node, end_node)
-end_time = time.time()
-
-print('------------UCS ALGORITHM------------')
-if path:
-    print("El camino de", start_node, "a", end_node, "es:", path)
-    print("Longitud del camino:", len(path) - 1)  # Restar 1 para obtener el número de aristas
-else:
-    print("No hay camino de", start_node, "a", end_node)
-
-print("Tiempo de ejecución:", end_time - start_time, "segundos")
-'''
-
-
 # Greedy Best First Search algorithm
 
 def greedy_best_first(start, end):
@@ -203,18 +130,25 @@ def greedy_best_first(start, end):
                 visited.add(neighbor)
     return None  # Devolver None si no se encuentra un camino
 
+#Depth delimited search algorithm
 
-
-start_time = time.time()
-path = greedy_best_first(start_node, end_node)
-end_time = time.time()
-
-print('------------GBFS ALGORITHM------------')
-if path:
-    print("El camino de", start_node, "a", end_node, "es:", path)
-    print("Longitud del camino:", len(path) - 1)  # Restar 1 para obtener el número de aristas
-else:
-    print("No hay camino de", start_node, "a", end_node)
-    
-print("Tiempo de ejecución:", end_time - start_time, "segundos")
+def depth_limited_search(start, end, limit):
+    visited = set()
+    queue = QueueLIFO()  # Utilizamos la cola LIFO en lugar de deque
+    queue.insert((start, []))  # Insertamos el elemento inicial
+    while not queue.empty():
+        print("Cola actual:", queue.queue)
+        print("Nodos visitados:", visited)
+        print("-----------------------------")
+        node, path = queue.remove_first()  # Usamos los métodos de la cola LIFO
+        print("Explorando nodo:", node)
+        if node == end:
+            return path + [node]  # Devolver el camino si se alcanza el nodo final
+        visited.add(node)
+        if len(path) < limit:
+            for neighbor, cost in cost_functions.get(node, {}).items():
+                if neighbor not in visited:
+                    queue.insert((neighbor, path + [node]))  # Insertamos el vecino en la cola LIFO
+                    visited.add(neighbor)
+    return None  # Devolver None si no se encuentra un camino
 
