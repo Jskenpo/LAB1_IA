@@ -10,6 +10,7 @@ Los siguientes algoritmos de búsqueda están implementados en este proyecto:
 - DFS (Depth-First Search)
 - A* Search
 - Greedy First Search
+- Depth limited search 
 
 ## Requisitos
 Asegúrate de tener instaladas las siguientes librerías:
@@ -36,5 +37,11 @@ El laberinto se representa como una matriz en un archivo de texto. Cada celda de
 - 0: Representa un camino libre por donde se puede mover 
 - 2: Representa el punto de inicio
 - 3: Representa el punto destino
+
+## Reporte de proyecto 
+
+A continuación se encuentra un reporte que contiene una discusión sobre la optimización de los algoritmos y saber cuales son las diferentes situaciones en las que se puede usar cada algoritmo diferente.
+
+<a href = './PROYECTO1 IA.pdf'>   CLICK AQUI PARA VER REPORTE  </a>
 
 
