@@ -67,7 +67,7 @@ def create_heuristic_functions(maze, end, distance_function):
     heuristic_functions = {}
     for i in range(len(maze)):
         for j in range(len(maze[0])):
-            if maze[i][j] == 0:  # Solo calcular la heurística para los espacios libres
+            if maze[i][j] == 1:  # Solo calcular la heurística para los espacios libres
                 heuristic_functions[(i, j)] = distance_function((i, j), end)
     return heuristic_functions
 
