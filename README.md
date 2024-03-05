@@ -33,8 +33,8 @@ Para ejecutar el programa y encontrar el camino en un laberinto dado, sigue esto
 
 El laberinto se representa como una matriz en un archivo de texto. Cada celda de la matriz puede tener uno de los siguientes valores:
 
-- 1: Representa una pared 
-- 0: Representa un camino libre por donde se puede mover 
+- 0: Representa una pared 
+- 1: Representa un camino libre por donde se puede mover 
 - 2: Representa el punto de inicio
 - 3: Representa el punto destino
 
